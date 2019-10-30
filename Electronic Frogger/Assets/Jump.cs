@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,11 +12,16 @@ public class Jump : MonoBehaviour
     public Vector3 gravity;
     public float sideMove;
     bool movingSide = false;
+    public GameObject Toungue;
+    private float toungueTimer;
+    public float BPS;
+    public float SPB;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        BPS = GameManager.GetGameManager.BPM / 60f;
+        SPB = 1 / BPS;
     }
 
     private void Reset()
@@ -66,8 +72,33 @@ public class Jump : MonoBehaviour
             movingSide = false;
 
         }
-        
+        toungueTimer += Time.fixedDeltaTime;
+        if (toungueTimer >= SPB)
+        {
+            toungueTimer -= SPB;
+            TriggerTounge(true);
+        }
+        else if (toungueTimer > SPB/8)
+        {
+            TriggerTounge(false);
+        }
     }
+
+    private void TriggerTounge(bool active)
+    {
+        Toungue.SetActive(active);
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, Vector3.back, out hit) && active)
+        {
+            Debug.Log(hit.collider.name);
+            Debug.Log(transform.position.y - transform.TransformPoint(transform.position).y);
+            hit.collider.gameObject.SetActive(false);
+        }
+
+
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         jumping = false; 
