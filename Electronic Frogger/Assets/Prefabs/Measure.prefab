@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 365591364690521649}
   - component: {fileID: 1574864566}
   - component: {fileID: 1574864567}
+  - component: {fileID: 1463538388475466687}
   m_Layer: 0
   m_Name: Measure
   m_TagString: Untagged
@@ -162,6 +163,19 @@ MonoBehaviour:
   distancePerBeat: 1
   rb: {fileID: 1574864566}
   BPS: 0
+--- !u!114 &1463538388475466687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2286773531240183196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4659871b9574b4573bf9f85e37633667, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beats: []
 --- !u!1 &4329790455542098353
 GameObject:
   m_ObjectHideFlags: 0
